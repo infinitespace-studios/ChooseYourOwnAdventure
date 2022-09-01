@@ -1,26 +1,37 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ChoseYouOwnAdventure.MainPage"
+             x:Class="ChoseYouOwnAdventure.View.MainPage"
              xmlns:model="clr-namespace:ChoseYouOwnAdventure.Model"
-             xmlns:local="clr-namespace:ChoseYouOwnAdventure.ViewModel"
+             xmlns:viewmodel="clr-namespace:ChoseYouOwnAdventure.ViewModel"
+             x:DataType="viewmodel:StoriesViewModel"
+             Title="{Binding Title}"
              BackgroundColor="{DynamicResource SecondaryColor}">
-    <ContentPage.BindingContext>
-        <local:StoriesViewModel x:Name="model" />
-    </ContentPage.BindingContext>
-    <StackLayout Padding="5">
-        <CollectionView ItemsSource="{Binding Stories}" SelectionChangedCommand="{Binding StorySelected}" x:DataType="local:StoriesViewModel">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto">
+        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding Stories}" SelectionMode="None" SelectionChangedCommand="{Binding StorySelected}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:StoryEntry">
-                    <HorizontalStackLayout Padding="10" Spacing="10">
-                        <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" />
-                        <VerticalStackLayout VerticalOptions="Start">
-                          <Label Text="{Binding Name}" FontSize="24" FontAttributes="Italic" />
-                          <Label Text="{Binding Description}" FontSize="22" LineBreakMode="WordWrap" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
+                    <Grid Padding="10">
+                        <Frame Padding="0" HeightRequest="120">
+                            <Grid Padding="10,10,10,1" ColumnDefinitions="Auto,*" RowDefinitions="Auto,*" ColumnSpacing="5">
+                                <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" Grid.RowSpan="2" />
+                                <Label Text="{Binding Name}" FontSize="24" FontAttributes="Italic" Grid.Column="1" HorizontalOptions="StartAndExpand" />
+                                <Label Text="{Binding Description}" FontSize="18" LineBreakMode="WordWrap"
+                                         VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+        <Button Grid.Row="1" Text="Search" />
+        <Button Grid.Row="1" Grid.Column="1" Text="Refresh" Command="{Binding GetStories}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"
+                           />
+    </Grid>
 </ContentPage>
 

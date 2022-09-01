@@ -74,12 +74,14 @@
 	  <None Remove="ViewModel\" />
 	  <None Remove="View\" />
 	  <None Remove="Resources\Raw\Stories.json" />
+	  <None Remove="Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Raw\" />
 	  <Folder Include="Model\" />
 	  <Folder Include="ViewModel\" />
 	  <Folder Include="View\" />
+	  <Folder Include="Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiAsset Include="Resources\Raw\OnceUponATime.json" />
@@ -87,6 +89,9 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\StoryView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="AppShell.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

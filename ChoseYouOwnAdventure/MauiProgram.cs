@@ -1,4 +1,9 @@
-﻿namespace ChoseYouOwnAdventure;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using ChoseYouOwnAdventure.Service;
+using ChoseYouOwnAdventure.ViewModel;
+using ChoseYouOwnAdventure.View;
+
+namespace ChoseYouOwnAdventure;
 
 public static class MauiProgram
 {
@@ -11,6 +16,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+
+		builder.Services.AddSingleton<StoryService>();
+		builder.Services.AddSingleton<StoriesViewModel>();
+		builder.Services.AddSingleton<MainPage>();
 
 		return builder.Build();
 	}

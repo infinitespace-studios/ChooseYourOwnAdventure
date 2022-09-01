@@ -1,44 +1,53 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Windows.Input;
 using ChoseYouOwnAdventure.Model;
+using ChoseYouOwnAdventure.Service;
 
 namespace ChoseYouOwnAdventure.ViewModel
 {
 	public class StoriesViewModel : BaseViewModel
 	{
-		const string DEFAULT_MANIFEST = "Resources/Raw/Stories.json";
-		public List<StoryEntry> Stories => stories;
-
+		StoryService storyService;
+		public ObservableCollection<StoryEntry> Stories { get; } = new ObservableCollection<StoryEntry>();
 		public ICommand StorySelected { get; private set; }
+		public ICommand GetStories { get; private set; }
 
-		List<StoryEntry> stories = new List<StoryEntry>();
 
-		public StoriesViewModel()
+		public StoriesViewModel(StoryService service)
 		{
+			storyService = service;
+			Title = "Stories";
 			StorySelected = new Command<StoryEntry>((s) => {
-                System.Diagnostics.Debug.WriteLine($"Selected {s.Name}");
-            });
+				System.Diagnostics.Debug.WriteLine($"Selected {s.Name}");
+			});
+			GetStories = new Command(async () => { await GetStoriesAsync(); });
 		}
 
-		public async Task<bool> LoadStories ()
+		async Task GetStoriesAsync()
 		{
-			if (!await FileSystem.Current.AppPackageFileExistsAsync(DEFAULT_MANIFEST))
-			{
-				return false;
-			}
-			using var stream = await FileSystem.Current.OpenAppPackageFileAsync(DEFAULT_MANIFEST);
+			if (IsBusy)
+				return;
 
-			var s1 = await JsonSerializer.DeserializeAsync<List<StoryEntry>>(stream);
-			foreach (var s in s1)
+			try
 			{
-				System.Diagnostics.Debug.WriteLine($"Adding {s.Name}");
-				stories.Add(s);
-				System.Diagnostics.Debug.WriteLine($"Stories {stories.Count ()}");
+				IsBusy = true;
+				var stories = await storyService.GetStories();
+				if (Stories.Count > 0)
+					Stories.Clear();
+				foreach (var story in stories) {
+					Stories.Add(story);
+				}
+
+			} catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex);
+			} finally
+			{
+				IsBusy = false;
 			}
-			OnPropertyChanged(nameof(Stories));
-			return true;
 		}
 	}
 }

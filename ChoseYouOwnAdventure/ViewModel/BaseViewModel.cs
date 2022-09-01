@@ -7,6 +7,7 @@ namespace ChoseYouOwnAdventure.ViewModel
 	public class BaseViewModel : INotifyPropertyChanged
 	{
 		bool isBusy;
+		string title;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -22,6 +23,15 @@ namespace ChoseYouOwnAdventure.ViewModel
 		}
 
 		public bool IsNotBusy => !IsBusy;
+
+		public string Title { get => title;
+			set {
+				if (title == value)
+					return;
+				title = value;
+				OnPropertyChanged();
+			}
+		}
 
 		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
