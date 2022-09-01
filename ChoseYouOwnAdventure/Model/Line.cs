@@ -6,8 +6,8 @@ namespace ChoseYouOwnAdventure.Model
 		public string Text { get; set; }
 		public string Image { get; set; }
 
-		public bool IsText => string.IsNullOrEmpty(Text);
-		public bool IsImage => !IsText;
+		public bool HasText => !string.IsNullOrEmpty(Text);
+		public bool HasImage => !string.IsNullOrEmpty(Image);
 	}
 }
 

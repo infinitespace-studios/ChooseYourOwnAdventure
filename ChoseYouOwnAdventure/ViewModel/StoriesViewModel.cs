@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Windows.Input;
 using ChoseYouOwnAdventure.Model;
 using ChoseYouOwnAdventure.Service;
+using ChoseYouOwnAdventure.View;
 
 namespace ChoseYouOwnAdventure.ViewModel
 {
@@ -20,10 +21,20 @@ namespace ChoseYouOwnAdventure.ViewModel
 		{
 			storyService = service;
 			Title = "Stories";
-			StorySelected = new Command<StoryEntry>((s) => {
-				System.Diagnostics.Debug.WriteLine($"Selected {s.Name}");
+			StorySelected = new Command<StoryEntry>(async (s) => {
+				await SelectStorEntry(s);
 			});
 			GetStories = new Command(async () => { await GetStoriesAsync(); });
+		}
+
+		async Task SelectStorEntry (StoryEntry entry)
+		{
+			if (entry is null)
+				return;
+
+			await Shell.Current.GoToAsync($"{nameof (StoryView)}", animate: true, parameters: new Dictionary<string, object>() {
+				{"StoryEntry", entry },
+			});
 		}
 
 		async Task GetStoriesAsync()

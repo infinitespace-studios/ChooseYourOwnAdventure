@@ -9,12 +9,36 @@ namespace ChoseYouOwnAdventure.View
 {
 	public partial class StoryView : ContentPage
 	{
-		public StoryViewModel model;
-		public StoryView(StoryEntry entry)
+		StoryViewModel vm;
+		public StoryView(StoryViewModel viewModel)
 		{
 			InitializeComponent();
-			model = new StoryViewModel();
-			model.Init(entry);
+			BindingContext = viewModel;
+			vm = viewModel;
+			vm.PropertyChanged += Vm_PropertyChanged;
+		}
+
+		private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			if (e.PropertyName == "IsChoosing")
+			{
+				if (vm.IsChoosing)
+				{
+					//await Choices.ScaleTo(0.0, 0, Easing.Linear);
+					//await Choices.ScaleTo(1.0, 250, Easing.BounceIn);
+
+				} else
+				{
+					//await Choices.ScaleTo(0.0, 250, Easing.BounceOut);
+				}
+			}
+		}
+
+		protected override void OnNavigatingFrom(NavigatingFromEventArgs args)
+		{
+			// We are moving away from this page.
+			vm.Closing();
+			base.OnNavigatingFrom(args);
 		}
 	}
 }

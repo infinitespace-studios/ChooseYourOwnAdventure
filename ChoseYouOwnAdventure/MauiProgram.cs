@@ -18,8 +18,14 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddSingleton<StoryService>();
+
+		// Main Page Setup
 		builder.Services.AddSingleton<StoriesViewModel>();
 		builder.Services.AddSingleton<MainPage>();
+
+		// Details Page Setup
+		builder.Services.AddTransient<StoryViewModel>();
+		builder.Services.AddTransient<StoryView>();
 
 		return builder.Build();
 	}

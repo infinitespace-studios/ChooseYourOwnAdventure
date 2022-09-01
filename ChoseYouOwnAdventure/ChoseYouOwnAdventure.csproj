@@ -75,6 +75,8 @@
 	  <None Remove="View\" />
 	  <None Remove="Resources\Raw\Stories.json" />
 	  <None Remove="Service\" />
+	  <None Remove="Resources\Raw\TheVoid.json" />
+	  <None Remove="Resources\Raw\CrimeScene.json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Raw\" />
@@ -86,6 +88,8 @@
 	<ItemGroup>
 	  <MauiAsset Include="Resources\Raw\OnceUponATime.json" />
 	  <MauiAsset Include="Resources\Raw\Stories.json" />
+	  <MauiAsset Include="Resources\Raw\TheVoid.json" />
+	  <MauiAsset Include="**/*" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\StoryView.xaml">

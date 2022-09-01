@@ -6,6 +6,12 @@
     "Description": "Once upon a time where was a simple story."
   },
   {
+    "Name": "The Crime Scene",
+    "Image": "dotnet_bot",
+    "StoryFile": "Resources/Raw/CrimeScene.json",
+    "Description": "Find the clues, solve the crime!"
+  },
+  {
     "Name": "The Void",
     "Image": "dotnet_bot",
     "StoryFile": "Resources/Raw/TheVoid.json",

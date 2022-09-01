@@ -2,34 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChoseYouOwnAdventure.View.StoryView"
-             Title="StoryView"
-             BackgroundColor="White">
-    <StackLayout>
-       <ListView ItemsSource="{Binding Lines}" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Label Text="{Binding Text}" HorizontalOptions="StartAndExpand" VerticalOptions="Start" FontSize="Body" IsVisible="{Binding IsText}"/>
-                                <Image Source="{Binding Image}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="{Binding IsImage}"/>
-                            </Grid>
-                        </ViewCell>
+             xmlns:viewmodel="clr-namespace:ChoseYouOwnAdventure.ViewModel"
+             xmlns:model="clr-namespace:ChoseYouOwnAdventure.Model"
+             xmlns:ink="clr-namespace:Ink.Runtime;assembly=ink-engine-runtime"
+             x:DataType="viewmodel:StoryViewModel"
+             Title="{Binding StoryEntry.Name}"
+             BackgroundColor="{DynamicResource TertiaryColor}">
+    <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,*">
+       <CollectionView ItemsSource="{Binding Lines}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Line">
+                            <VerticalStackLayout Padding="5" Spacing="5">
+                                <Label Text="{Binding Text}" HorizontalOptions="StartAndExpand" Style="{StaticResource MediumLabel}" LineBreakMode="WordWrap" VerticalOptions="Start" IsVisible="{Binding HasText}" />
+                                <Image Source="{Binding Image}" HorizontalOptions="StartAndExpand" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" VerticalOptions="Center" IsVisible="{Binding HasImage}"/>
+                            </VerticalStackLayout>
                     </DataTemplate>
-
-                </ListView.ItemTemplate>
-
-            </ListView>
-            <ListView ItemsSource="{Binding Choices}" SelectionMode="Single">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Label Text="{Binding text}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                        </ViewCell>
-
+                </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Frame Grid.Row="1" Grid.ColumnSpan="2" IsVisible="{Binding IsChoosing}" CornerRadius="20" BackgroundColor="Black">
+            <VerticalStackLayout>
+            <Label Text="Choose you path..." Style="{StaticResource LargeLabel}" Padding="10" />
+            <CollectionView ItemsSource="{Binding Choices}" SelectionMode="None" x:Name="Choices" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="ink:Choice">
+                        <Frame CornerRadius="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoryViewModel}}, Path=Choose}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        <Label Text="{Binding text}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Style="{StaticResource MediumLabel}" />
+                        </Frame>
                     </DataTemplate>
-
-                </ListView.ItemTemplate>
-
-            </ListView>
-    </StackLayout>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+                </VerticalStackLayout>
+        </Frame>
+        
+        <Button Grid.Row="2" Grid.Column="1" Text="Restart" Command="{Binding Restart}" IsVisible="{Binding IsComplete}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="{DynamicResource PrimaryColor}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+            Grid.RowSpan="3" Grid.ColumnSpan="2" ZIndex="1"
+            />
+    </Grid>
 </ContentPage>

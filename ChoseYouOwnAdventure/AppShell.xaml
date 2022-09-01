@@ -3,5 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:ChoseYouOwnAdventure.View"
              x:Class="ChoseYouOwnAdventure.AppShell">
-    <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
+    <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" Shell.NavBarIsVisible="true" Title="Stories" />
 </Shell>
