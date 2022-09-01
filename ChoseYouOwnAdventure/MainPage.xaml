@@ -1,0 +1,26 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChoseYouOwnAdventure.MainPage"
+             xmlns:model="clr-namespace:ChoseYouOwnAdventure.Model"
+             xmlns:local="clr-namespace:ChoseYouOwnAdventure.ViewModel"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+    <ContentPage.BindingContext>
+        <local:StoriesViewModel x:Name="model" />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="5">
+        <CollectionView ItemsSource="{Binding Stories}" SelectionChangedCommand="{Binding StorySelected}" x:DataType="local:StoriesViewModel">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:StoryEntry">
+                    <HorizontalStackLayout Padding="10" Spacing="10">
+                        <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" />
+                        <VerticalStackLayout VerticalOptions="Start">
+                          <Label Text="{Binding Name}" FontSize="24" FontAttributes="Italic" />
+                          <Label Text="{Binding Description}" FontSize="22" LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+
