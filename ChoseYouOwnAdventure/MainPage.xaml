@@ -16,7 +16,7 @@
                                 <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" Grid.RowSpan="2" />
                                 <Label Text="{Binding Name}" FontSize="24" FontAttributes="Italic" Grid.Column="1" HorizontalOptions="StartAndExpand" />
                                 <Label Text="{Binding Description}" FontSize="18" LineBreakMode="WordWrap"
-                                         VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" />
+                                    VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" />
                             </Grid>
                         </Frame>
                     </Grid>
@@ -25,13 +25,10 @@
         </CollectionView>
         <Button Grid.Row="1" Text="Search" />
         <Button Grid.Row="1" Grid.Column="1" Text="Refresh" Command="{Binding GetStories}"/>
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"
-                           />
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="{DynamicResource PrimaryColor}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+            Grid.RowSpan="2" Grid.ColumnSpan="2" ZIndex="1"
+            />
     </Grid>
 </ContentPage>
 
