@@ -16,7 +16,7 @@ namespace ChooseYouOwnAdventure.ViewModel
 		public ObservableCollection<StoryEntry> Stories { get; } = new ObservableCollection<StoryEntry>();
 		public ICommand StorySelected { get; private set; }
 		public ICommand GetStories { get; private set; }
-
+		public bool IsRefreshing { get; set; }
 
 		public StoriesViewModel(StoryService service, IConnectivity connectivity)
 		{
@@ -28,6 +28,8 @@ namespace ChooseYouOwnAdventure.ViewModel
 			});
 			GetStories = new Command(async () => {
 				await GetStoriesAsync();
+				IsRefreshing = false;
+				OnPropertyChanged(nameof(IsRefreshing));
 			});
 			Shell.Current.Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (500),async () => {
 				await GetStoriesAsync(forceRefresh: false);

@@ -7,6 +7,7 @@
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource TertiaryColor}">
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetStories}" Grid.ColumnSpan="2" RefreshColor="{DynamicResource PrimaryColor}">
         <CollectionView ItemsSource="{Binding Stories}" SelectionMode="None" Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:StoryEntry">
@@ -26,12 +27,13 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </RefreshView>
         <!--<Button Grid.Row="1" Text="Search" />-->
-        <Button Grid.Row="1" Grid.Column="1" Text="Refresh" Command="{Binding GetStories}"/>
+        <!--<Button Grid.Row="1" Grid.Column="1" Text="Refresh" Command="{Binding GetStories}"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="{DynamicResource PrimaryColor}"
             HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
             Grid.RowSpan="2" Grid.ColumnSpan="2" ZIndex="1"
-            />
+            />-->
     </Grid>
 </ContentPage>
 
