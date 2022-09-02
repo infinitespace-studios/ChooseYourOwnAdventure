@@ -1,0 +1,83 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+          "label": "build",
+          "type": "shell",
+          "command": "dotnet build ${input:project} -c ${input:configuration} -f ${input:framework} -bl",
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "problemMatcher": [
+              "$msCompile"
+          ]
+        },
+        {
+          "label": "run",
+          "type": "shell",
+          "command": "dotnet build ${input:project} -c ${input:configuration} -f ${input:framework} -p:AttachDebugger=${input:attach} -t:Run -bl",
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "problemMatcher": [
+              "$msCompile"
+          ]
+        },
+    ],    
+    "inputs": [
+      {
+        "id": "configuration",
+        "type": "pickString",
+        "default": "Debug",
+        "description": "The Build Configuration",
+        "options": [ "Debug", "Release"]
+      },
+      {
+        "id": "attach",
+        "type": "pickString",
+        "default": "Build",
+        "description": "Attach Debugger?",
+        "options": [
+            "true",
+            "false",
+        ]
+      },
+      {
+        // Add additional projects here. They will be available in the drop down
+        // in vscode.
+        "id": "project",
+        "type": "pickString",
+        "default": "ChoseYouOwnAdventure/ChoseYouOwnAdventure.csproj",
+        "description": "Pick the Project you want to build.",
+        "options": [
+            "ChoseYouOwnAdventure/ChoseYouOwnAdventure.csproj",
+        ]
+      },
+      {
+        "id": "target",
+        "type": "pickString",
+        "default": "Build",
+        "description": "Select MSBuild Target to run.",
+        "options": [
+            "Build",
+            "Install",
+            "SignAndroidPackage",
+            "Clean"
+        ]
+      },
+      {
+        "id": "framework",
+        "type": "pickString",
+        "default": "Build",
+        "description": "Select Framework.",
+        "options": [
+            "net6.0-android",
+            "net6.0-ios"
+        ]
+      },
+    ]
+}

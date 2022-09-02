@@ -24,12 +24,8 @@ namespace ChoseYouOwnAdventure.View
 			{
 				if (vm.IsChoosing)
 				{
-					//await Choices.ScaleTo(0.0, 0, Easing.Linear);
-					//await Choices.ScaleTo(1.0, 250, Easing.BounceIn);
+					story.ScrollTo(vm.Lines.Count() - 1);
 
-				} else
-				{
-					//await Choices.ScaleTo(0.0, 250, Easing.BounceOut);
 				}
 			}
 		}

@@ -9,7 +9,7 @@
              Title="{Binding StoryEntry.Name}"
              BackgroundColor="{DynamicResource TertiaryColor}">
     <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,*">
-       <CollectionView ItemsSource="{Binding Lines}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="2">
+       <CollectionView ItemsSource="{Binding Lines}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="2" x:Name="story">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Line">
                             <VerticalStackLayout Padding="5" Spacing="5">
