@@ -92,12 +92,4 @@
 	  <MauiAsset Include="Resources\Raw\TheVoid.json" />
 	  <MauiAsset Include="Resources\Raw\CrimeScene.json" />
 	</ItemGroup>
-	<ItemGroup>
-	  <MauiXaml Update="View\StoryView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="AppShell.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	</ItemGroup>
 </Project>
