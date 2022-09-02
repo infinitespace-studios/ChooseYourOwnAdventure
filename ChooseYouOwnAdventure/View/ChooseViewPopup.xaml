@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ChooseYouOwnAdventure.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ink="clr-namespace:Ink.Runtime;assembly=ink-engine-runtime"
+             x:Class="ChooseYouOwnAdventure.View.ChooseViewPopup"
+             x:DataType="viewmodel:StoryViewModel"
+             HorizontalOptions="Center"
+             VerticalOptions="End"
+             Color="Transparent">
+    <Frame Grid.Row="1" Grid.ColumnSpan="2" IsVisible="{Binding IsChoosing}" CornerRadius="5" BackgroundColor="Black">
+        <VerticalStackLayout>
+            <Label Text="What do you want to do?" Style="{StaticResource LargeLabel}" Padding="2" />
+            <CollectionView ItemsSource="{Binding Choices}" SelectionMode="None" x:Name="Choices" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="ink:Choice">
+                        <Grid Padding="1">
+                        <Frame CornerRadius="2" BackgroundColor="{DynamicResource TertiaryColor}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoryViewModel}}, Path=Choose}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        <Label Text="{Binding text}" Padding="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Style="{StaticResource BaseLabel}" />
+                        </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </Frame>
+</toolkit:Popup>
