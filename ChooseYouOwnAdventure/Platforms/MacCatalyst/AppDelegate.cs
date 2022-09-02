@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace ChooseYouOwnAdventure;
+namespaceChooseYourOwnAdventure;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

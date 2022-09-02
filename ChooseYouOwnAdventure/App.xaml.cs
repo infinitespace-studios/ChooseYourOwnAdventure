@@ -1,4 +1,4 @@
-﻿namespace ChooseYouOwnAdventure;
+﻿namespaceChooseYourOwnAdventure;
 
 public partial class App : Application
 {

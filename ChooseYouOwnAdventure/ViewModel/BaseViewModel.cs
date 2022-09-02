@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ChooseYouOwnAdventure.ViewModel
+namespaceChooseYourOwnAdventure.ViewModel
 {
 	public class BaseViewModel : INotifyPropertyChanged
 	{

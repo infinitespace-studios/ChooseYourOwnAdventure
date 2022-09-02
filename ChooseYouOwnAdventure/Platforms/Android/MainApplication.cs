@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace ChooseYouOwnAdventure;
+namespaceChooseYourOwnAdventure;
 
 [Application]
 public class MainApplication : MauiApplication

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Input;
-using ChooseYouOwnAdventure.Model;
-using ChooseYouOwnAdventure.View;
-using ChooseYouOwnAdventure.ViewModel;
+usingChooseYourOwnAdventure.Model;
+usingChooseYourOwnAdventure.View;
+usingChooseYourOwnAdventure.ViewModel;
 using Ink.Runtime;
 
-namespace ChooseYouOwnAdventure.View;
+namespaceChooseYourOwnAdventure.View;
 
 public partial class MainPage : ContentPage
 {

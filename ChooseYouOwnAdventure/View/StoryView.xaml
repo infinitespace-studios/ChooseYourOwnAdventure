@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ChooseYouOwnAdventure.View.StoryView"
-             xmlns:viewmodel="clr-namespace:ChooseYouOwnAdventure.ViewModel"
-             xmlns:model="clr-namespace:ChooseYouOwnAdventure.Model"
+             x:Class="ChooseYourOwnAdventure.View.StoryView"
+             xmlns:viewmodel="clr-namespace:ChooseYourOwnAdventure.ViewModel"
+             xmlns:model="clr-namespace:ChooseYourOwnAdventure.Model"
              xmlns:ink="clr-namespace:Ink.Runtime;assembly=ink-engine-runtime"
              x:DataType="viewmodel:StoryViewModel"
              Title="{Binding StoryEntry.Name}"
