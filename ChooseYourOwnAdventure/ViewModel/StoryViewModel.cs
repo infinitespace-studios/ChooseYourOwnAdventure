@@ -140,7 +140,10 @@ namespace ChooseYourOwnAdventure.ViewModel
 			{
 				if (tag.StartsWith ("image:"))
 				{
-					return tag.Replace("image:", string.Empty).Trim();
+					string image = tag.Replace("image:", string.Empty).Trim();
+					if (!image.EndsWith (".png"))
+						image += ".png";
+					return image;
 				}
 			}
 			return String.Empty;
