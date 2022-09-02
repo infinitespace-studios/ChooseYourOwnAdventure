@@ -1,0 +1,46 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  mac_build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+         submodules: 'recursive'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore workloads
+      run: dotnet workload restore
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+      
+  windows_build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+         submodules: 'recursive'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore workloads
+      run: dotnet workload restore
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
