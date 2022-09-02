@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:ChooseYourOwnAdventure"
-             x:Class="ChooseYouOwnAdventure.App"
+             x:Class="ChooseYourOwnAdventure.App"
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
         <ResourceDictionary>

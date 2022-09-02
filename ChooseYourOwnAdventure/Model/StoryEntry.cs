@@ -1,5 +1,5 @@
 ﻿using System;
-namespaceChooseYourOwnAdventure.Model
+namespace ChooseYourOwnAdventure.Model
 {
 	public class StoryEntry
 	{

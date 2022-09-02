@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespaceChooseYourOwnAdventure;
+namespace ChooseYourOwnAdventure;
 
 public class Program
 {

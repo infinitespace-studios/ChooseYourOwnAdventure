@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Windows.Input;
-usingChooseYourOwnAdventure.Model;
-usingChooseYourOwnAdventure.Service;
-usingChooseYourOwnAdventure.View;
+using ChooseYourOwnAdventure.Model;
+using ChooseYourOwnAdventure.Service;
+using ChooseYourOwnAdventure.View;
 
-namespaceChooseYourOwnAdventure.ViewModel
+namespace ChooseYourOwnAdventure.ViewModel
 {
 	public class StoriesViewModel : BaseViewModel
 	{

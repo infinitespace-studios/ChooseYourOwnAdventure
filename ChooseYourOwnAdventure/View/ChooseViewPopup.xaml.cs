@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 using CommunityToolkit.Maui.Views;
 
-namespaceChooseYourOwnAdventure.View
+namespace ChooseYourOwnAdventure.View
 {
 	public partial class ChooseViewPopup : Popup
 	{

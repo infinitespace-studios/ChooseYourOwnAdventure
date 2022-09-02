@@ -2,11 +2,11 @@
 using System.Text.Json;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-usingChooseYourOwnAdventure.Model;
-usingChooseYourOwnAdventure.Service;
+using ChooseYourOwnAdventure.Model;
+using ChooseYourOwnAdventure.Service;
 using InkRuntime = Ink.Runtime;
 
-namespaceChooseYourOwnAdventure.ViewModel
+namespace ChooseYourOwnAdventure.ViewModel
 {
 	[QueryProperty ("StoryEntry", "StoryEntry")]
 	public class StoryViewModel : BaseViewModel

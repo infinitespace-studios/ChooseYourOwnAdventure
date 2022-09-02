@@ -1,12 +1,12 @@
 ﻿using System;
-usingChooseYourOwnAdventure.Model;
-usingChooseYourOwnAdventure.ViewModel;
+using ChooseYourOwnAdventure.Model;
+using ChooseYourOwnAdventure.ViewModel;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 using CommunityToolkit.Maui.Views;
 
-namespaceChooseYourOwnAdventure.View
+namespace ChooseYourOwnAdventure.View
 {
 	public partial class StoryView : ContentPage
 	{

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-usingChooseYourOwnAdventure.Service;
-usingChooseYourOwnAdventure.ViewModel;
-usingChooseYourOwnAdventure.View;
+using ChooseYourOwnAdventure.Service;
+using ChooseYourOwnAdventure.ViewModel;
+using ChooseYourOwnAdventure.View;
 using CommunityToolkit.Maui;
 
-namespaceChooseYourOwnAdventure;
+namespace ChooseYourOwnAdventure;
 
 public static class MauiProgram
 {
