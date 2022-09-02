@@ -51,10 +51,10 @@
         // in vscode.
         "id": "project",
         "type": "pickString",
-        "default": "ChooseYouOwnAdventure/ChooseYouOwnAdventure.csproj",
+        "default": "ChooseYourOwnAdventure/ChooseYourOwnAdventure.csproj",
         "description": "Pick the Project you want to build.",
         "options": [
-            "ChooseYouOwnAdventure/ChooseYouOwnAdventure.csproj",
+            "ChooseYourOwnAdventure/ChooseYourOwnAdventure.csproj",
         ]
       },
       {
