@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Windows.Input;
-using ChoseYouOwnAdventure.Model;
-using ChoseYouOwnAdventure.Service;
-using ChoseYouOwnAdventure.View;
+using ChooseYouOwnAdventure.Model;
+using ChooseYouOwnAdventure.Service;
+using ChooseYouOwnAdventure.View;
 
-namespace ChoseYouOwnAdventure.ViewModel
+namespace ChooseYouOwnAdventure.ViewModel
 {
 	public class StoriesViewModel : BaseViewModel
 	{
@@ -27,6 +27,9 @@ namespace ChoseYouOwnAdventure.ViewModel
 				await SelectStorEntry(s);
 			});
 			GetStories = new Command(async () => { await GetStoriesAsync(); });
+			Shell.Current.Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (500), () => {
+				GetStories.Execute(this);
+			});
 		}
 
 		async Task SelectStorEntry (StoryEntry entry)

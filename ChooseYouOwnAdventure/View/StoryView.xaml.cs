@@ -1,11 +1,12 @@
 ﻿using System;
-using ChoseYouOwnAdventure.Model;
-using ChoseYouOwnAdventure.ViewModel;
+using ChooseYouOwnAdventure.Model;
+using ChooseYouOwnAdventure.ViewModel;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
+using CommunityToolkit.Maui.Views;
 
-namespace ChoseYouOwnAdventure.View
+namespace ChooseYouOwnAdventure.View
 {
 	public partial class StoryView : ContentPage
 	{
@@ -16,9 +17,30 @@ namespace ChoseYouOwnAdventure.View
 			BindingContext = viewModel;
 			vm = viewModel;
 			vm.PropertyChanged += Vm_PropertyChanged;
+			choices.PropertyChanged += Choices_PropertyChanged;
 		}
 
-		private async void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		private void Choices_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			if (e.PropertyName == "IsVisible")
+			{
+				if (choices.IsVisible)
+				{
+					try
+					{
+						Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (200), () => {
+							story.ScrollTo(vm.Lines.Count() - 1);
+						});
+					}
+					catch (Exception ex)
+					{
+						System.Diagnostics.Debug.WriteLine(ex);						// If we fail ignore it.
+					}
+				}
+			}
+		}
+
+		private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "IsChoosing")
 			{
@@ -26,11 +48,13 @@ namespace ChoseYouOwnAdventure.View
 				{
 					try
 					{
-						story.ScrollTo(vm.Lines.Count() - 1);
+					//	story.ScrollTo(vm.Lines.Count() - 1);
 					} catch
 					{
 						// If we fail ignore it.
 					}
+				} else
+				{
 				}
 			}
 		}

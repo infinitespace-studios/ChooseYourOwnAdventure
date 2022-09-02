@@ -1,8 +1,8 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ChoseYouOwnAdventure.View.MainPage"
-             xmlns:model="clr-namespace:ChoseYouOwnAdventure.Model"
-             xmlns:viewmodel="clr-namespace:ChoseYouOwnAdventure.ViewModel"
+             x:Class="ChooseYouOwnAdventure.View.MainPage"
+             xmlns:model="clr-namespace:ChooseYouOwnAdventure.Model"
+             xmlns:viewmodel="clr-namespace:ChooseYouOwnAdventure.ViewModel"
              x:DataType="viewmodel:StoriesViewModel"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource TertiaryColor}">

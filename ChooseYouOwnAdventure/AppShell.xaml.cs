@@ -1,6 +1,6 @@
-﻿using ChoseYouOwnAdventure.View;
+﻿using ChooseYouOwnAdventure.View;
 
-namespace ChoseYouOwnAdventure;
+namespace ChooseYouOwnAdventure;
 
 public partial class AppShell : Shell
 {

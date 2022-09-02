@@ -2,11 +2,11 @@
 using System.Text.Json;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using ChoseYouOwnAdventure.Model;
-using ChoseYouOwnAdventure.Service;
+using ChooseYouOwnAdventure.Model;
+using ChooseYouOwnAdventure.Service;
 using InkRuntime = Ink.Runtime;
 
-namespace ChoseYouOwnAdventure.ViewModel
+namespace ChooseYouOwnAdventure.ViewModel
 {
 	[QueryProperty ("StoryEntry", "StoryEntry")]
 	public class StoryViewModel : BaseViewModel
@@ -39,11 +39,13 @@ namespace ChoseYouOwnAdventure.ViewModel
 		}
 
 		public bool IsComplete { get => !story?.canContinue ?? false; }
+		public bool HasChoices { get => story?.currentChoices.Count > 0; }
 
 		public ICommand Choose { get; private set; }
 		public ICommand Restart { get; private set; }
+		public ICommand ShowChoices { get; private set; }
 
-		public StoryViewModel (StoryService service)
+		public StoryViewModel(StoryService service)
 		{
 			storyService = service;
 			Choose = new Command<InkRuntime.Choice>((c) => {
@@ -74,6 +76,9 @@ namespace ChoseYouOwnAdventure.ViewModel
 				{
 					IsBusy = false;
 				}
+			});
+			ShowChoices = new Command(() => {
+				IsChoosing = HasChoices;
 			});
 		}
 
@@ -108,6 +113,7 @@ namespace ChoseYouOwnAdventure.ViewModel
 			if (story.currentChoices.Count > 0)
 			{
 				OnPropertyChanged(nameof(Choices));
+				OnPropertyChanged(nameof(HasChoices));
 				IsChoosing = true;
 			}
 			OnPropertyChanged(nameof(IsComplete));

@@ -2,9 +2,9 @@
 using System.IO;
 using System.Text.Json;
 using System.Net.Http;
-using ChoseYouOwnAdventure.Model;
+using ChooseYouOwnAdventure.Model;
 
-namespace ChoseYouOwnAdventure.Service
+namespace ChooseYouOwnAdventure.Service
 {
 	public class StoryService
 	{

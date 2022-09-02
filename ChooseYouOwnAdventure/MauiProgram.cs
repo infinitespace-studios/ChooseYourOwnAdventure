@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-using ChoseYouOwnAdventure.Service;
-using ChoseYouOwnAdventure.ViewModel;
-using ChoseYouOwnAdventure.View;
+using ChooseYouOwnAdventure.Service;
+using ChooseYouOwnAdventure.ViewModel;
+using ChooseYouOwnAdventure.View;
+using CommunityToolkit.Maui;
 
-namespace ChoseYouOwnAdventure;
+namespace ChooseYouOwnAdventure;
 
 public static class MauiProgram
 {
@@ -12,6 +13,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
