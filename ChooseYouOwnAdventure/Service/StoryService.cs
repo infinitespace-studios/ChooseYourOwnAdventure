@@ -9,7 +9,8 @@ namespace ChooseYouOwnAdventure.Service
 	public class StoryService
 	{
 		const string DEFAULT_MANIFEST = "Resources/Raw/Stories.json";
-		const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYouOwnAdventure/development/ChoseYouOwnAdventure";
+		//const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYouOwnAdventure/development/ChoseYouOwnAdventure";
+		const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYouOwnAdventureStories/main";
 
 		HttpClient client;
 		List<StoryEntry> storyEntries;
@@ -25,10 +26,10 @@ namespace ChooseYouOwnAdventure.Service
 			if ((storyEntries?.Count ?? 0) > 0 && !forcerefresh)
 				return storyEntries;
 
-			string url = $"{ROOT_URL}/${DEFAULT_MANIFEST}";
+			string url = $"{ROOT_URL}/{DEFAULT_MANIFEST}";
 
 			HttpResponseMessage response = null;
-			if (connectivity.NetworkAccess != NetworkAccess.Internet) {
+			if (connectivity.NetworkAccess == NetworkAccess.Internet) {
 				response = await client.GetAsync(url);
 			}
 			if (response is null || !response.IsSuccessStatusCode)

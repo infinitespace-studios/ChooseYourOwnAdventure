@@ -26,9 +26,11 @@ namespace ChooseYouOwnAdventure.ViewModel
 			StorySelected = new Command<StoryEntry>(async (s) => {
 				await SelectStorEntry(s);
 			});
-			GetStories = new Command(async () => { await GetStoriesAsync(); });
-			Shell.Current.Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (500), () => {
-				GetStories.Execute(this);
+			GetStories = new Command(async () => {
+				await GetStoriesAsync();
+			});
+			Shell.Current.Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (500),async () => {
+				await GetStoriesAsync(forceRefresh: false);
 			});
 		}
 
@@ -42,7 +44,7 @@ namespace ChooseYouOwnAdventure.ViewModel
 			});
 		}
 
-		async Task GetStoriesAsync()
+		async Task GetStoriesAsync(bool forceRefresh = true)
 		{
 			if (IsBusy)
 				return;
@@ -50,7 +52,7 @@ namespace ChooseYouOwnAdventure.ViewModel
 			try
 			{
 				IsBusy = true;
-				var stories = await storyService.GetStories();
+				var stories = await storyService.GetStories(forcerefresh: forceRefresh);
 				if (Stories.Count > 0)
 					Stories.Clear();
 				foreach (var story in stories) {

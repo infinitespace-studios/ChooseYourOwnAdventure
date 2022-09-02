@@ -28,7 +28,7 @@ namespace ChooseYouOwnAdventure.View
 				{
 					try
 					{
-						Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (200), () => {
+						Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds (50), () => {
 							story.ScrollTo(vm.Lines.Count() - 1);
 						});
 					}

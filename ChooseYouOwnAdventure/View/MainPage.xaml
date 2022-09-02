@@ -7,7 +7,7 @@
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource TertiaryColor}">
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto">
-        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding Stories}" SelectionMode="None">
+        <CollectionView ItemsSource="{Binding Stories}" SelectionMode="None" Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:StoryEntry">
                     <Grid Padding="10">
@@ -26,7 +26,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Grid.Row="1" Text="Search" />
+        <!--<Button Grid.Row="1" Text="Search" />-->
         <Button Grid.Row="1" Grid.Column="1" Text="Refresh" Command="{Binding GetStories}"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="{DynamicResource PrimaryColor}"
             HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
