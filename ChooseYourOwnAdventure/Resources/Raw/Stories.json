@@ -1,19 +1,19 @@
 ﻿[
   {
     "Name": "Once Upon A Time",
-    "Image": "dotnet_bot",
+    "Image": "dotnet_bot.png",
     "StoryFile": "Resources/Raw/OnceUponATime.json",
     "Description": "Once upon a time where was a simple story."
   },
   {
     "Name": "The Crime Scene",
-    "Image": "dotnet_bot",
+    "Image": "dotnet_bot.png",
     "StoryFile": "Resources/Raw/CrimeScene.json",
     "Description": "Find the clues, solve the crime!"
   },
   {
     "Name": "The Void",
-    "Image": "dotnet_bot",
+    "Image": "dotnet_bot.png",
     "StoryFile": "Resources/Raw/TheVoid.json",
     "Description": "A dark adventure into the depths of space and the human mind."
   }
