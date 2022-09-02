@@ -44,16 +44,6 @@
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
-	</ItemGroup>
-
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-	</PropertyGroup>
 
 	<!-- <ItemGroup>
 		<PackageReference Include="Inkle.Ink.Engine" Version="0.7.4" />
@@ -68,37 +58,8 @@
 	<!-- <ItemGroup>
 	  <MauiAsset Include="Resources\Raw\OnceUponATime.json" />
 	</ItemGroup> -->
-	<ItemGroup>
-	  <None Remove="Resources\Raw\" />
-	  <None Remove="Resources\Raw\OnceUponATime.json" />
-	  <None Remove="Model\" />
-	  <None Remove="ViewModel\" />
-	  <None Remove="View\" />
-	  <None Remove="Resources\Raw\Stories.json" />
-	  <None Remove="Service\" />
-	  <None Remove="Resources\Raw\TheVoid.json" />
-	  <None Remove="Resources\Raw\CrimeScene.json" />
-	  <None Remove="CommunityToolkit.Maui" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Resources\Raw\" />
-	  <Folder Include="Model\" />
-	  <Folder Include="ViewModel\" />
-	  <Folder Include="View\" />
-	  <Folder Include="Service\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiAsset Include="Resources\Raw\OnceUponATime.json" />
-	  <MauiAsset Include="Resources\Raw\Stories.json" />
-	  <MauiAsset Include="Resources\Raw\TheVoid.json" />
-	  <MauiAsset Include="Resources\Raw\CrimeScene.json" />
-	</ItemGroup>
+	
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiXaml Update="View\ChooseViewPopup.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	</ItemGroup>
 </Project>
