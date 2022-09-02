@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChooseYouOwnAdventure", "ChooseYouOwnAdventure\ChooseYouOwnAdventure.csproj", "{2595A8A8-8A67-4443-9B32-C0990EF55245}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChooseYourOwnAdventure", "ChooseYourOwnAdventure\ChooseYourOwnAdventure.csproj", "{2595A8A8-8A67-4443-9B32-C0990EF55245}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ink-engine-runtime", "External\ink\ink-engine-runtime\ink-engine-runtime.csproj", "{1A21A381-810A-49A6-B736-A819504A5A68}"
 EndProject
