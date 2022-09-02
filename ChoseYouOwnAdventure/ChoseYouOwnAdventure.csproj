@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net6.0-android</TargetFrameworks>
+		<TargetFrameworks Condition=" '$(SupportIOS)' == 'true' ">net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>ChoseYouOwnAdventure</RootNamespace>
@@ -14,7 +15,7 @@
 		<ApplicationTitle>ChoseYouOwnAdventure</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.choseyouownadventure</ApplicationId>
+		<ApplicationId>com.companyname.chooseyouownadventure</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationVersion>1</ApplicationVersion>
@@ -89,7 +90,7 @@
 	  <MauiAsset Include="Resources\Raw\OnceUponATime.json" />
 	  <MauiAsset Include="Resources\Raw\Stories.json" />
 	  <MauiAsset Include="Resources\Raw\TheVoid.json" />
-	  <MauiAsset Include="**/*" />
+	  <MauiAsset Include="Resources\Raw\CrimeScene.json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\StoryView.xaml">

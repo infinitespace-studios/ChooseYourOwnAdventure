@@ -12,13 +12,15 @@ namespace ChoseYouOwnAdventure.ViewModel
 	public class StoriesViewModel : BaseViewModel
 	{
 		StoryService storyService;
+		IConnectivity connectivity;
 		public ObservableCollection<StoryEntry> Stories { get; } = new ObservableCollection<StoryEntry>();
 		public ICommand StorySelected { get; private set; }
 		public ICommand GetStories { get; private set; }
 
 
-		public StoriesViewModel(StoryService service)
+		public StoriesViewModel(StoryService service, IConnectivity connectivity)
 		{
+			this.connectivity = connectivity;
 			storyService = service;
 			Title = "Stories";
 			StorySelected = new Command<StoryEntry>(async (s) => {

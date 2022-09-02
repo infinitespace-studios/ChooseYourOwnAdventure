@@ -18,14 +18,19 @@ namespace ChoseYouOwnAdventure.View
 			vm.PropertyChanged += Vm_PropertyChanged;
 		}
 
-		private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		private async void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "IsChoosing")
 			{
 				if (vm.IsChoosing)
 				{
-					story.ScrollTo(vm.Lines.Count() - 1);
-
+					try
+					{
+						story.ScrollTo(vm.Lines.Count() - 1);
+					} catch
+					{
+						// If we fail ignore it.
+					}
 				}
 			}
 		}

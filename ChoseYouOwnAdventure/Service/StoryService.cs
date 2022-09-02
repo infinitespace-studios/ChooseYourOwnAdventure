@@ -13,19 +13,25 @@ namespace ChoseYouOwnAdventure.Service
 
 		HttpClient client;
 		List<StoryEntry> storyEntries;
+		IConnectivity connectivity;
 
-		public StoryService()
+		public StoryService(IConnectivity connectivity)
 		{
+			this.connectivity = connectivity;
 			client = new HttpClient();
 		}
-		public async Task<List<StoryEntry>> GetStories ()
+		public async Task<List<StoryEntry>> GetStories (bool forcerefresh = false)
 		{
-			if ((storyEntries?.Count ?? 0) > 0)
+			if ((storyEntries?.Count ?? 0) > 0 && !forcerefresh)
 				return storyEntries;
 
 			string url = $"{ROOT_URL}/${DEFAULT_MANIFEST}";
-			var response = await client.GetAsync(url);
-			if (!response.IsSuccessStatusCode)
+
+			HttpResponseMessage response = null;
+			if (connectivity.NetworkAccess != NetworkAccess.Internet) {
+				response = await client.GetAsync(url);
+			}
+			if (response is null || !response.IsSuccessStatusCode)
 			{
 				// load backup data.
 				if (!await FileSystem.Current.AppPackageFileExistsAsync(DEFAULT_MANIFEST))
@@ -56,7 +62,7 @@ namespace ChoseYouOwnAdventure.Service
 			{
 				json = File.ReadAllText(path);
 			}
-			if (string.IsNullOrEmpty(json))
+			if (string.IsNullOrEmpty(json) && connectivity.NetworkAccess == NetworkAccess.Internet)
 			{
 				var response = await client.GetAsync($"{ROOT_URL}/{entry.StoryFile}");
 				if (response.IsSuccessStatusCode)

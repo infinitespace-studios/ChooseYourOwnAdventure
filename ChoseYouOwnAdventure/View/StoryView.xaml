@@ -22,16 +22,18 @@
         
         <Frame Grid.Row="1" Grid.ColumnSpan="2" IsVisible="{Binding IsChoosing}" CornerRadius="20" BackgroundColor="Black">
             <VerticalStackLayout>
-            <Label Text="Choose you path..." Style="{StaticResource LargeLabel}" Padding="10" />
+            <Label Text="Choose you path..." Style="{StaticResource LargeLabel}" Padding="5" />
             <CollectionView ItemsSource="{Binding Choices}" SelectionMode="None" x:Name="Choices" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="ink:Choice">
-                        <Frame CornerRadius="5">
+                        <Grid Padding="3">
+                        <Frame CornerRadius="2" BackgroundColor="{DynamicResource TertiaryColor}">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoryViewModel}}, Path=Choose}" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
-                        <Label Text="{Binding text}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Style="{StaticResource MediumLabel}" />
+                        <Label Text="{Binding text}" Padding="2" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Style="{StaticResource MediumLabel}" />
                         </Frame>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

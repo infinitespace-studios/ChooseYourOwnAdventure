@@ -96,6 +96,7 @@ namespace ChoseYouOwnAdventure.ViewModel
 		{
 			if (story is null)
 			{
+				Lines.Add(new Line() { Text = "There was an error loading this story. Please try again later." });
 				OnPropertyChanged(nameof(IsComplete));
 				return;
 			}
