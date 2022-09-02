@@ -9,8 +9,8 @@ namespace ChooseYourOwnAdventure.Service
 	public class StoryService
 	{
 		const string DEFAULT_MANIFEST = "Resources/Raw/Stories.json";
-		//const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYouOwnAdventure/development/ChoseYouOwnAdventure";
-		const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYouOwnAdventureStories/main";
+		//const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYourOwnAdventure/development/ChoseYouOwnAdventure";
+		const string ROOT_URL = "https://raw.githubusercontent.com/infinitespace-studios/ChooseYourOwnAdventureStories/main";
 
 		HttpClient client;
 		List<StoryEntry> storyEntries;
