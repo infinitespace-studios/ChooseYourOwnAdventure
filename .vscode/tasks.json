@@ -75,8 +75,9 @@
         "default": "Build",
         "description": "Select Framework.",
         "options": [
-            "net6.0-android",
-            "net6.0-ios"
+            "net7.0-android",
+            "net7.0-ios",
+            "net7.0-maccatalyst",
         ]
       },
     ]
