@@ -5,12 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Sample Under DotNet",
+            "name": "Debug Under DotNet",
              "type":"mono",
              "request": "attach",
              "address": "127.0.0.1",
              "port": 10000,
              "preLaunchTask": "run",
-          }
+        },
+        {
+            "name": "Debug Under DevKit",
+             "type":"mono",
+             "request": "attach",
+             "address": "127.0.0.1",
+             "port": 10000,
+             "preLaunchTask": "run",
+        }
     ]
 }
