@@ -51,7 +51,7 @@ namespace ChooseYourOwnAdventure.Service
 		public async Task<Ink.Runtime.Story> GetStory (StoryEntry entry)
 		{
 			string json = string.Empty;
-			string path = Path.Combine(FileSystem.AppDataDirectory, entry.StoryFile);
+			string path = Path.Combine(FileSystem.AppDataDirectory, this.GetType ().Assembly.GetName ().Name, entry.StoryFile);
 			if (await FileSystem.Current.AppPackageFileExistsAsync(entry.StoryFile))
 			{
 				// we have a local copy. Load it.

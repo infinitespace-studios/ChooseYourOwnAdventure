@@ -21,6 +21,8 @@ namespace ChooseYourOwnAdventure.ViewModel
 				if (value is null)
 					return;
 				storyEntry = value;
+				if (story is not null)
+					return;
 				App.Current.Dispatcher.Dispatch (async () => await LoadStory (storyEntry));
 			}
 		}

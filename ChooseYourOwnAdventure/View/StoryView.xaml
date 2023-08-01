@@ -21,9 +21,9 @@
         </CollectionView>
         
         <Frame Grid.Row="1" Grid.ColumnSpan="2" IsVisible="{Binding IsChoosing}" CornerRadius="5" BackgroundColor="Black" x:Name="choices">
-            <VerticalStackLayout>
+            <Grid RowDefinitions="Auto,*">
             <Label Text="Select Action..." Style="{StaticResource LargeLabel}" Padding="5" />
-            <CollectionView ItemsSource="{Binding Choices}" SelectionMode="None" x:Name="Choices" >
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Choices}" SelectionMode="None" x:Name="Choices" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="ink:Choice">
                         <Grid Padding="5">
@@ -37,7 +37,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-                </VerticalStackLayout>
+            </Grid>
         </Frame>
 
         <!--<Button Grid.Row="2" Grid.Column="1" Text="Show Choices" Command="{Binding ShowChoices}" />-->

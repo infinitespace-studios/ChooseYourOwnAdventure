@@ -24,7 +24,7 @@ namespace ChooseYourOwnAdventure.ViewModel
 			storyService = service;
 			Title = "Stories";
 			StorySelected = new Command<StoryEntry>(async (s) => {
-				await SelectStorEntry(s);
+				await SelectStoryEntry(s);
 			});
 			GetStories = new Command(async () => {
 				await GetStoriesAsync();
@@ -36,14 +36,21 @@ namespace ChooseYourOwnAdventure.ViewModel
 			});
 		}
 
-		async Task SelectStorEntry (StoryEntry entry)
+		async Task SelectStoryEntry (StoryEntry entry)
 		{
 			if (entry is null)
 				return;
 
-			await Shell.Current.GoToAsync($"{nameof (StoryView)}", animate: true, parameters: new Dictionary<string, object>() {
+			try
+			{
+				await Shell.Current.GoToAsync($"{nameof(StoryView)}", animate: true, parameters: new Dictionary<string, object>() {
 				{"StoryEntry", entry },
 			});
+			} catch (Exception ex)
+			{
+				Console.WriteLine (ex);
+				throw;
+			}
 		}
 
 		async Task GetStoriesAsync(bool forceRefresh = true)
