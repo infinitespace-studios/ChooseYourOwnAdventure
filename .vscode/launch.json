@@ -14,11 +14,7 @@
         },
         {
             "name": "Debug Under DevKit",
-             "type":"mono",
-             "request": "attach",
-             "address": "127.0.0.1",
-             "port": 10000,
-             "preLaunchTask": "run",
+             "type":"maui",
         }
     ]
 }
