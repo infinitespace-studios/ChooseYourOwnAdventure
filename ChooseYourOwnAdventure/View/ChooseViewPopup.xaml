@@ -18,7 +18,7 @@
                         <Grid Padding="1">
                         <Frame CornerRadius="2" BackgroundColor="{DynamicResource TertiaryColor}">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoryViewModel}}, Path=Choose}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoryViewModel}}, Path=Choose, x:DataType=viewmodel:StoryViewModel}" CommandParameter="{Binding}" />
                             </Frame.GestureRecognizers>
                         <Label Text="{Binding text}" Padding="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Style="{StaticResource BaseLabel}" />
                         </Frame>

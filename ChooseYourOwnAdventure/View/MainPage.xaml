@@ -14,7 +14,7 @@
                     <Grid Padding="10">
                         <Frame Padding="0" HeightRequest="120" CornerRadius="20">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoriesViewModel}}, Path=StorySelected}"/>
+                                <TapGestureRecognizer CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StoriesViewModel}}, Path=StorySelected, x:DataType=viewmodel:StoriesViewModel}"/>
                             </Frame.GestureRecognizers>
                             <Grid Padding="10,10,10,1" ColumnDefinitions="Auto,*" RowDefinitions="Auto,*" ColumnSpacing="5">
                                 <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" Grid.RowSpan="2" />
